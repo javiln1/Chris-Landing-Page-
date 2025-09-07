@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Page</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Wistia Video Scripts -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/9cgy06q3rn.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/r7xuin9thz.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/deo3myzyg9.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/pe6jou66h0.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/y10r1bvqta.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/fn8f70ebeg.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/xhozxwijty.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/pfn6znpc61.js" async type="module"></script>
+    <style>
+        wistia-player[media-id='9cgy06q3rn']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/9cgy06q3rn/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='r7xuin9thz']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/r7xuin9thz/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='deo3myzyg9']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/deo3myzyg9/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='pe6jou66h0']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/pe6jou66h0/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='y10r1bvqta']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/y10r1bvqta/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='fn8f70ebeg']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/fn8f70ebeg/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='xhozxwijty']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/xhozxwijty/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        wistia-player[media-id='pfn6znpc61']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/pfn6znpc61/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+    </style>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: #000000;
+            padding: 2rem 0;
+            border-bottom: 1px solid #25DF44;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .education-logo {
+            max-width: 200px;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .header-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #FFFFFF;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .education-section {
+            background: linear-gradient(135deg, #000000 0%, #0A2D0A 100%);
+            color: #FFFFFF;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-radius: 15px;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .section-text {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background-color: #25DF44;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .highlight-box li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        /* Key Principles */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .principle-card {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #25DF44;
+            border: 1px solid #25DF44;
+        }
+
+        .principle-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .principle-text {
+            font-size: 0.95rem;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #1a1a1a;
+            color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(37, 223, 68, 0.2);
+            border: 1px solid #25DF44;
+        }
+
+        .cta-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: #25DF44;
+            color: #000000;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 223, 68, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #1bc93a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 223, 68, 0.6);
+        }
+
+        /* Video Sections */
+        .video-section {
+            background-color: #1a1a1a;
+            color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(37, 223, 68, 0.2);
+            border: 1px solid #25DF44;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(37, 223, 68, 0.3);
+            border: 1px solid #25DF44;
+        }
+
+        .video-container iframe,
+        .video-container wistia-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .video-block {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2);
+            border: 1px solid #25DF44;
+        }
+
+        .video-block-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            padding: 1.5rem 1.5rem 1rem 1.5rem;
+            margin: 0;
+        }
+
+        .video-block-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+
+        .video-block-container iframe,
+        .video-block-container wistia-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        /* Questions Section */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .question-video {
+            margin-bottom: 1.5rem;
+        }
+
+        .question-video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            margin-bottom: 0.75rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .question-video-container iframe,
+        .question-video-container wistia-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .question-caption {
+            font-size: 0.9rem;
+            color: #25DF44;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* Testimonial Image Styling */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .testimonial-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2);
+            border: 1px solid #25DF44;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 223, 68, 0.4);
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .testimonial-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            padding: 1rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Typeform Inline Embed Styles */
+        .typeform-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(37, 223, 68, 0.3);
+            border: 1px solid #25DF44;
+        }
+
+        .typeform-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #000000;
+            margin: 2% auto;
+            padding: 0;
+            width: 95%;
+            max-width: 600px;
+            height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 25px 50px rgba(37, 223, 68, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #25DF44;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close:hover {
+            background-color: #25DF44;
+        }
+
+        .modal-body {
+            height: calc(100% - 80px);
+            padding: 0;
+        }
+
+        /* Full-screen Typeform Modal */
+        .typeform-modal {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            max-height: none;
+            border-radius: 0;
+            background-color: white;
+            animation: typeformFadeIn 0.4s ease-out;
+        }
+
+        .typeform-modal .modal-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .typeform-modal .close {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .typeform-modal .close:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .typeform-modal .modal-body {
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .typeform-modal .modal-body iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes typeformFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Video Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            animation: videoModalFadeIn 0.3s ease;
+        }
+
+        .video-modal-content {
+            position: relative;
+            background-color: #000000;
+            margin: 0 auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(37, 223, 68, 0.8);
+            animation: videoModalSlideIn 0.3s ease;
+            /* Center the modal vertically */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .video-modal-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #25DF44;
+        }
+
+        .video-modal-close {
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background-color: rgba(37, 223, 68, 0.5);
+        }
+
+        .video-modal-close:hover {
+            background-color: #25DF44;
+            transform: scale(1.1);
+        }
+
+        .video-modal-body {
+            padding: 0;
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .video-modal-body iframe,
+        .video-modal-body wistia-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* Video Block Clickable Styles */
+        .video-block,
+        .question-video {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-block:hover,
+        .question-video:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 223, 68, 0.4);
+        }
+
+        .video-block:active,
+        .question-video:active {
+            transform: translateY(-1px);
+        }
+
+        /* Video Modal Animations */
+        @keyframes videoModalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes videoModalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .education-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .video-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .questions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cta-section {
+                padding: 2rem;
+            }
+
+            .hidden-cta {
+                padding: 1.5rem;
+            }
+
+            .typeform-modal .close {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+                top: 15px;
+                right: 15px;
+            }
+
+            /* Mobile Video Modal Adjustments */
+            .video-modal-content {
+                width: 95%;
+                margin: 0 auto;
+                max-width: none;
+                /* Keep centered positioning on mobile */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .video-modal-header {
+                padding: 0.75rem 1rem;
+            }
+
+            .video-modal-close {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="Screenshot Jul 17 2025 from Company Info.png" alt="GPC Logo" class="education-logo">
+            </div>
+            
+            <h1 class="header-title">Application Received</h1>
+            <p class="header-subtitle">Go through all of the videos before we speak</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Introduction -->
+        <section class="education-section">
+            <h2 style="text-align:center; margin: 40px 0 10px; font-size: 2.5rem; color: #25DF44; font-weight: 700;">MANDATORY WATCH</h2>
+            <p style="text-align:center; margin: 0 0 30px; font-size: 1.3rem; color: #FFFFFF; line-height: 1.5; background-color: #25DF44; color: #000000; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Watch all of the videos below to be prepared for our call or any questions I might have for you on instagram</p>
+            
+            <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+              <!-- THANK YOU VIDEO -->
+              <wistia-player media-id="9cgy06q3rn" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+            </div>
+        </section>
+
+        <!-- Key Principles -->
+        <section class="education-section">
+            <h2 style="text-align:center; margin: 40px 0; font-size: 2rem;">FAQ's</h2>
+            
+            <div class="breakouts-grid" style="display:grid; grid-template-columns:1fr; gap:24px;">
+                
+                <!-- FAQ 1 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">How much do I need to Invest?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="xhozxwijty" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">How Quickly will I make my money back?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="r7xuin9thz" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">How long does it take to see results?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="deo3myzyg9" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">What happens if I don't succeed?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="pe6jou66h0" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">How much experience do I need to Succeed?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="y10r1bvqta" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Does Chris do this business model?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="fn8f70ebeg" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="breakout-item" style="display:flex; flex-direction:column; gap:10px;">
+                    <h3 class="principle-title" style="text-align: center; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; color: #FFFFFF; background-color: #25DF44; color: #000000; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">How much Support will I get?</h3>
+                    <div style="position:relative; width:100%; max-width:100%; height:0; padding-bottom:56.25%; overflow:hidden; border: 2px solid #25DF44; border-radius: 8px;">
+                        <wistia-player media-id="pfn6znpc61" aspect="1.7777777777777777" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></wistia-player>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mandatory Watch Before Call -->
+        <section class="education-section">
+            <h2 style="text-align:center; margin: 40px 0 10px; font-size: 2.5rem; color: #25DF44; font-weight: 700;">Mandatory watch before our call</h2>
+            <p style="text-align:center; margin: 0 0 30px; font-size: 1.1rem; color: #FFFFFF; line-height: 1.5; opacity: 0.9;">This call is not going to be an "education call" we want to have an actual productive discussion to see if its a good fit so watch all the videos below</p>
+            
+            <div class="video-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin:2rem 0;">
+                
+                <!-- Video 1 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Organic Dropshipping Training</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/4IB8P1Mbox4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Facebook Organic Training</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/xzSFetOkn6g" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Instagram Branding Training</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/EhR_zLsYDgo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">How to use AI for Organic Dropshipping</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/b9g4JwYUYfs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Results -->
+        <section class="education-section">
+            <h2 style="text-align:center; margin: 40px 0; font-size: 2rem;">Student Results</h2>
+            
+            <div class="video-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin:2rem 0;">
+                
+                <!-- Student 1 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Matthew hit the Organic World Record!</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/Rk411QVS8B8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 2 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Joe made 60k in 28 days</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/zSKuXr_N0CE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 3 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Lucas made 45k in 90 Days</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/Yhi_0eKoUp0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 4 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">How Dave makes 18k per month at 36</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/cf5ilEwQD9A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 5 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Max is making 16k per month</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/vN1EsZ21Yt4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 6 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Belle is making 11k just 45 days after joining</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/h3Dk9K78UJA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

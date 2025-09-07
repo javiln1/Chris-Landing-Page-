@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Received - Organic Demons</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Confirmation Container */
+        .confirmation-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #000000;
+        }
+
+        .confirmation-card {
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 4rem 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirmation-logo {
+            max-width: 200px;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        /* Success Icon */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #25DF44;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem auto;
+            color: #000000;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Typography */
+        .confirmation-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .confirmation-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: #25DF44;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .confirmation-text {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background-color: #25DF44;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .next-steps li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background-color: #25DF44;
+            color: #000000;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 223, 68, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #1bc93a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 223, 68, 0.6);
+        }
+
+        /* Countdown styling */
+        .countdown-text {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-weight: 600;
+            color: #25DF44;
+        }
+
+        /* Animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .confirmation-container {
+                padding: 1rem;
+            }
+
+            .confirmation-card {
+                padding: 3rem 2rem;
+            }
+
+            .success-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .next-steps {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="Screenshot Jul 17 2025 from Company Info.png" alt="GPC Logo" class="confirmation-logo">
+            </div>
+            
+            <!-- Success Icon -->
+            <div class="success-icon">✓</div>
+            
+            <!-- Title -->
+            <h1 class="confirmation-title">Application Received</h1>
+            
+            <!-- Subtitle -->
+            <p class="confirmation-subtitle">If you already booked a call, you're set. If not, no stress – we'll move you to the right next step.</p>
+            
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3>What happens next (fast):</h3>
+                <ul>
+                    <li>A team member will reach out within the next hour.</li>
+                    <li>You'll hear from us via Instagram DM, SMS, and a quick call to keep things moving.</li>
+                    <li>Booked a call already? Expect confirmations and simple prep notes.</li>
+                    <li>Haven't booked yet? We'll guide you to the best option and answer any questions.</li>
+                </ul>
+            </div>
+            
+            <!-- CTA Button -->
+            <!-- This button automatically redirects users to the education page after a brief delay. This helps shift the upcoming sales call from an "education call" to a "purchase-ready" call by warming them up with context, value, and authority. -->
+            <button class="cta-button" id="redirectButton">
+                Continue to Education Page
+            </button>
+            
+            <!-- Auto-redirect message -->
+            <p class="countdown-text">
+                Redirecting automatically in <span class="countdown-number" id="countdown">10</span> seconds...
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up redirects...');
+            // Auto-redirect functionality
+            let countdown = 10;
+            const countdownElement = document.getElementById('countdown');
+            const redirectButton = document.getElementById('redirectButton');
+            
+            console.log('Countdown element:', countdownElement);
+            console.log('Redirect button:', redirectButton);
+            
+            // Update countdown every second
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    // Redirect to education page
+                    window.location.href = 'Organic Demons Education Recap.html';
+                }
+            }, 1000);
+            
+            // Manual redirect button (in case user wants to go immediately)
+            redirectButton.addEventListener('click', () => {
+                clearInterval(countdownInterval);
+                window.location.href = 'Organic Demons Education Recap.html';
+            });
+            
+            // Set timeout for automatic redirect after 10 seconds
+            setTimeout(function() {
+                window.location.href = 'Organic Demons Education Recap.html';
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

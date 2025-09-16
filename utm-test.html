@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM Parameter Tracking Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h3 {
+            color: #555;
+            margin-top: 0;
+        }
+        button {
+            background-color: #007cba;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #005a87;
+        }
+        .output {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .url-examples {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .url-examples a {
+            display: block;
+            margin: 5px 0;
+            color: #007cba;
+            text-decoration: none;
+        }
+        .url-examples a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UTM Parameter Tracking Test</h1>
+        
+        <div class="test-section">
+            <h3>Test URLs with UTM Parameters</h3>
+            <p>Click these links to test UTM parameter capture:</p>
+            <div class="url-examples">
+                <a href="?utm_source=google&utm_medium=cpc&utm_campaign=summer_sale&utm_term=dropshipping&utm_content=ad1">Google Ads Campaign</a>
+                <a href="?utm_source=facebook&utm_medium=social&utm_campaign=brand_awareness&utm_content=post1">Facebook Campaign</a>
+                <a href="?utm_source=email&utm_medium=newsletter&utm_campaign=weekly_update&utm_content=header_cta">Email Campaign</a>
+                <a href="?utm_source=instagram&utm_medium=social&utm_campaign=influencer&utm_content=story&gclid=abc123">Instagram with GCLID</a>
+                <a href="?utm_source=tiktok&utm_medium=social&utm_campaign=viral&utm_content=video1&fbclid=xyz789">TikTok with FBCLID</a>
+                <a href="?utm_source=direct&utm_medium=none&utm_campaign=organic">Direct Traffic</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Current UTM Parameters</h3>
+            <button onclick="displayCurrentUTM()">Show Current UTM Parameters</button>
+            <button onclick="displayStoredUTM()">Show Stored UTM Parameters</button>
+            <button onclick="clearUTM()">Clear UTM Parameters</button>
+            <div id="utmOutput" class="output">Click a button above to see UTM data</div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Form Submission</h3>
+            <p>This form will automatically include UTM parameters when submitted:</p>
+            <form id="testForm" onsubmit="handleFormSubmit(event)">
+                <div style="margin: 10px 0;">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin: 5px 0;">
+                </div>
+                <div style="margin: 10px 0;">
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin: 5px 0;">
+                </div>
+                <button type="submit">Submit Form (with UTM data)</button>
+            </form>
+            <div id="formOutput" class="output" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Event Tracking</h3>
+            <button onclick="trackTestEvent()">Track Test Event</button>
+            <button onclick="trackCustomEvent()">Track Custom Event</button>
+            <div id="eventOutput" class="output">Event tracking results will appear here</div>
+        </div>
+
+        <div class="test-section">
+            <h3>Console Output</h3>
+            <p>Open your browser's developer console (F12) to see detailed UTM tracking logs.</p>
+            <button onclick="showConsoleInfo()">Show Console Info</button>
+        </div>
+    </div>
+
+    <!-- UTM Parameter Tracking -->
+    <script src="utm-tracking.js"></script>
+    
+    <script>
+        function displayCurrentUTM() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmData = {};
+            
+            for (const [key, value] of urlParams) {
+                utmData[key] = value;
+            }
+            
+            document.getElementById('utmOutput').textContent = 
+                'Current URL Parameters:\n' + JSON.stringify(utmData, null, 2);
+        }
+
+        function displayStoredUTM() {
+            if (window.utmTracker) {
+                const storedUTM = window.utmTracker.getStoredUTMParams();
+                document.getElementById('utmOutput').textContent = 
+                    'Stored UTM Parameters:\n' + JSON.stringify(storedUTM, null, 2);
+            } else {
+                document.getElementById('utmOutput').textContent = 
+                    'UTM Tracker not initialized yet. Please wait a moment and try again.';
+            }
+        }
+
+        function clearUTM() {
+            if (window.utmTracker) {
+                window.utmTracker.clearUTMParams();
+                document.getElementById('utmOutput').textContent = 'UTM parameters cleared!';
+            } else {
+                document.getElementById('utmOutput').textContent = 
+                    'UTM Tracker not available.';
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const formObject = {};
+            
+            for (const [key, value] of formData) {
+                formObject[key] = value;
+            }
+            
+            const output = document.getElementById('formOutput');
+            output.style.display = 'block';
+            output.textContent = 'Form Data (including UTM parameters):\n' + 
+                JSON.stringify(formObject, null, 2);
+        }
+
+        function trackTestEvent() {
+            if (window.trackEvent) {
+                window.trackEvent('test_event', {
+                    test_data: 'This is a test event',
+                    timestamp: new Date().toISOString()
+                });
+                document.getElementById('eventOutput').textContent = 
+                    'Test event tracked! Check console for details.';
+            } else {
+                document.getElementById('eventOutput').textContent = 
+                    'Event tracking not available yet.';
+            }
+        }
+
+        function trackCustomEvent() {
+            if (window.trackEvent) {
+                window.trackEvent('custom_interaction', {
+                    interaction_type: 'button_click',
+                    page: 'utm_test',
+                    custom_property: 'test_value'
+                });
+                document.getElementById('eventOutput').textContent = 
+                    'Custom event tracked! Check console for details.';
+            } else {
+                document.getElementById('eventOutput').textContent = 
+                    'Event tracking not available yet.';
+            }
+        }
+
+        function showConsoleInfo() {
+            console.log('=== UTM Tracking Test Page ===');
+            console.log('Current URL:', window.location.href);
+            console.log('UTM Tracker available:', !!window.utmTracker);
+            console.log('Track Event function available:', !!window.trackEvent);
+            
+            if (window.utmTracker) {
+                console.log('Stored UTM Parameters:', window.utmTracker.getStoredUTMParams());
+                console.log('Session UTM Parameters:', window.utmTracker.getSessionUTMParams());
+            }
+            
+            alert('Check the browser console (F12) for detailed UTM tracking information.');
+        }
+
+        // Show initial UTM data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                displayStoredUTM();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

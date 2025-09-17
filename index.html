@@ -955,6 +955,46 @@
             color: #ffffff;
         }
 
+        /* Featured Videos Container */
+        .featured-videos-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .featured-video-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .featured-video-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-video-card .video-embed {
+            width: 100%;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .featured-video-card .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
         .student-testimonials-container {
             max-width: 800px;
             margin: 0 auto;
@@ -1094,6 +1134,24 @@
             margin-bottom: 3rem;
             line-height: 1.5;
             opacity: 0.9;
+        }
+
+        /* Responsive breakpoints for featured videos */
+        @media (max-width: 1024px) {
+            .featured-videos-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .featured-videos-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
         }
 
         /* Responsive breakpoints for student videos */
@@ -1865,6 +1923,33 @@
         <div class="student-testimonials-container">
             <!-- Section Title -->
             <h2 class="student-testimonials-title fade-in">Proof</h2>
+            
+            <!-- Featured Student Videos -->
+            <div class="featured-videos-container fade-in">
+                <div class="featured-video-card scale-in">
+                    <div class="video-embed">
+                        <iframe 
+                            src="https://www.youtube.com/embed/tqE3WQRZeO0" 
+                            title="Student Success Story 1" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="featured-video-card scale-in">
+                    <div class="video-embed">
+                        <iframe 
+                            src="https://www.youtube.com/embed/E4CbXjKxunU" 
+                            title="Student Success Story 2" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Testimonials Grid -->
             <div class="testimonials-grid">
                 <div class="testimonial-card scale-in">
@@ -2068,6 +2153,21 @@
                         window.trackEvent('video_complete', {
                             video_id: 'hero_video',
                             video_title: 'Organic Demons System Video'
+                        });
+                    }
+                });
+            });
+
+            // Track featured student videos
+            const featuredVideos = document.querySelectorAll('.featured-video-card iframe');
+            featuredVideos.forEach((video, index) => {
+                video.addEventListener('load', function() {
+                    // Track when video loads
+                    if (window.trackEvent) {
+                        window.trackEvent('featured_video_load', {
+                            video_index: index + 1,
+                            video_src: this.src,
+                            section: 'student_testimonials'
                         });
                     }
                 });

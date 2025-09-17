@@ -955,46 +955,6 @@
             color: #ffffff;
         }
 
-        /* Featured Videos Container */
-        .featured-videos-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .featured-video-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .featured-video-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .featured-video-card .video-embed {
-            width: 100%;
-            position: relative;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
-        }
-
-        .featured-video-card .video-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 12px;
-        }
-
         .student-testimonials-container {
             max-width: 800px;
             margin: 0 auto;
@@ -1134,24 +1094,6 @@
             margin-bottom: 3rem;
             line-height: 1.5;
             opacity: 0.9;
-        }
-
-        /* Responsive breakpoints for featured videos */
-        @media (max-width: 1024px) {
-            .featured-videos-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                max-width: 800px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .featured-videos-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                max-width: 100%;
-                margin-bottom: 2rem;
-            }
         }
 
         /* Responsive breakpoints for student videos */
@@ -1923,33 +1865,6 @@
         <div class="student-testimonials-container">
             <!-- Section Title -->
             <h2 class="student-testimonials-title fade-in">Proof</h2>
-            
-            <!-- Featured Student Videos -->
-            <div class="featured-videos-container fade-in">
-                <div class="featured-video-card scale-in">
-                    <div class="video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/tqE3WQRZeO0" 
-                            title="Student Success Story 1" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-                <div class="featured-video-card scale-in">
-                    <div class="video-embed">
-                        <iframe 
-                            src="https://www.youtube.com/embed/E4CbXjKxunU" 
-                            title="Student Success Story 2" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Testimonials Grid -->
             <div class="testimonials-grid">
                 <div class="testimonial-card scale-in">
@@ -2036,6 +1951,108 @@
                 <div class="testimonial-card scale-in">
                     <img src="IMG_7817.PNG" alt="Student result 22" class="testimonial-image" loading="lazy">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Testimonials Section -->
+    <section class="student-testimonials-section">
+        <div class="student-testimonials-container">
+            <h2 class="student-testimonials-title fade-in">Student Testimonials</h2>
+            
+            <!-- Featured Student Videos - Most Important -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="text-align:center; margin: 30px 0 20px; font-size: 1.5rem; color: #25DF44; font-weight: 700;">Featured Success Stories</h3>
+                <div class="video-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin:2rem 0;">
+                    
+                    <!-- Featured Video 1 -->
+                    <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                        <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Featured Student Success Story 1</div>
+                        <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                            <iframe src="https://www.youtube.com/embed/tqE3WQRZeO0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Featured Video 2 -->
+                    <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                        <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Featured Student Success Story 2</div>
+                        <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                            <iframe src="https://www.youtube.com/embed/E4CbXjKxunU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin:2rem 0;">
+                
+                <!-- Student 1 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Matthew hit the Organic World Record!</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/Rk411QVS8B8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 2 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Joe made 60k in 28 days</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/zSKuXr_N0CE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 3 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Lucas made 45k in 90 Days</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/Yhi_0eKoUp0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 4 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">How Dave makes 18k per month at 36</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/cf5ilEwQD9A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 5 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Max is making 16k per month</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/vN1EsZ21Yt4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Student 6 -->
+                <div class="video-block" style="background-color: #1a1a1a; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(37, 223, 68, 0.2); border: 1px solid #25DF44;">
+                    <div class="video-block-title" style="font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: #FFFFFF; padding: 1.5rem 1.5rem 1rem 1.5rem; margin: 0;">Watch how Belle is making 11k just 45 days after joining</div>
+                    <div class="video-block-container" style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                        <iframe src="https://www.youtube.com/embed/h3Dk9K78UJA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button for Student Testimonials Section -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="cta-button scale-in" onclick="openOverlay()" style="
+                    background: linear-gradient(135deg, #25DF44 0%, #1DBF3A 100%);
+                    color: #000000;
+                    border: none;
+                    padding: 1rem 2.5rem;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    font-family: 'Inter', sans-serif;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(37, 223, 68, 0.3);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37, 223, 68, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(37, 223, 68, 0.3)'">
+                    Start Your Success Story Today
+                </button>
             </div>
         </div>
     </section>
@@ -2153,21 +2170,6 @@
                         window.trackEvent('video_complete', {
                             video_id: 'hero_video',
                             video_title: 'Organic Demons System Video'
-                        });
-                    }
-                });
-            });
-
-            // Track featured student videos
-            const featuredVideos = document.querySelectorAll('.featured-video-card iframe');
-            featuredVideos.forEach((video, index) => {
-                video.addEventListener('load', function() {
-                    // Track when video loads
-                    if (window.trackEvent) {
-                        window.trackEvent('featured_video_load', {
-                            video_index: index + 1,
-                            video_src: this.src,
-                            section: 'student_testimonials'
                         });
                     }
                 });

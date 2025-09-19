@@ -2062,9 +2062,32 @@
         // Overlay functionality
         function openOverlay() {
             const overlay = document.getElementById('applicationOverlay');
+            const typeformIframe = overlay.querySelector('.typeform-embed');
+            
+            // Get UTM parameters and append to Typeform URL
+            if (window.utmTracker) {
+                const utmParams = window.utmTracker.getUTMAsURLString();
+                if (utmParams) {
+                    const baseUrl = 'https://form.typeform.com/to/bO95W9RG';
+                    const separator = baseUrl.includes('?') ? '&' : '?';
+                    typeformIframe.src = baseUrl + separator + utmParams;
+                }
+            }
+            
             overlay.style.display = 'block';
             overlay.style.animation = 'fadeIn 0.3s ease';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Track Typeform interactions
+            setTimeout(() => {
+                if (typeformIframe && window.trackEvent) {
+                    // Track when Typeform loads
+                    window.trackEvent('typeform_loaded', {
+                        form_url: typeformIframe.src,
+                        utm_params_included: utmParams ? true : false
+                    });
+                }
+            }, 1000);
         }
 
         function closeOverlay() {
@@ -2170,8 +2193,9 @@
             window.openOverlay = function() {
                 if (window.trackEvent) {
                     window.trackEvent('form_overlay_open', {
-                        form_type: 'application_form',
-                        trigger: 'cta_button'
+                        form_type: 'typeform_application',
+                        trigger: 'cta_button',
+                        form_url: 'https://form.typeform.com/to/bO95W9RG'
                     });
                 }
                 originalOpenOverlay();
@@ -2182,7 +2206,8 @@
             window.closeOverlay = function() {
                 if (window.trackEvent) {
                     window.trackEvent('form_overlay_close', {
-                        form_type: 'application_form'
+                        form_type: 'typeform_application',
+                        form_url: 'https://form.typeform.com/to/bO95W9RG'
                     });
                 }
                 originalCloseOverlay();

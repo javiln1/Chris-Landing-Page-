@@ -34,6 +34,7 @@
     <div class="debug-section">
         <h2>Test Event Tracking</h2>
         <button onclick="testEventTracking()">Test Event Tracking</button>
+        <button onclick="testTypeformUTM()">Test Typeform UTM</button>
         <div id="event-results"></div>
     </div>
     
@@ -135,6 +136,30 @@
                 }
             } else {
                 resultsDiv.innerHTML = '<div class="error">❌ trackEvent function not available</div>';
+            }
+        }
+        
+        function testTypeformUTM() {
+            const resultsDiv = document.getElementById('event-results');
+            
+            if (window.utmTracker) {
+                try {
+                    const utmParams = window.utmTracker.getUTMAsURLString();
+                    const baseUrl = 'https://form.typeform.com/to/bO95W9RG';
+                    const testUrl = utmParams ? baseUrl + '?' + utmParams : baseUrl;
+                    
+                    resultsDiv.innerHTML = `
+                        <div class="success">✅ Typeform UTM Test</div>
+                        <div class="info"><strong>Base URL:</strong> ${baseUrl}</div>
+                        <div class="info"><strong>UTM Parameters:</strong> ${utmParams || 'None'}</div>
+                        <div class="info"><strong>Final URL:</strong> ${testUrl}</div>
+                        <div class="info"><strong>Test:</strong> <a href="${testUrl}" target="_blank">Open Typeform with UTM</a></div>
+                    `;
+                } catch (e) {
+                    resultsDiv.innerHTML = '<div class="error">❌ Error testing Typeform UTM: ' + e.message + '</div>';
+                }
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ UTM Tracker not available</div>';
             }
         }
         

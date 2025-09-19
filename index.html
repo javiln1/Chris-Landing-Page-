@@ -2064,38 +2064,8 @@
             const overlay = document.getElementById('applicationOverlay');
             const typeformIframe = overlay.querySelector('.typeform-embed');
             
-            // Get UTM parameters and pass to Typeform using hidden fields
-            if (window.utmTracker) {
-                const storedParams = window.utmTracker.getStoredUTMParams();
-                
-                if (Object.keys(storedParams).length > 0) {
-                    // Use Typeform's hidden fields approach
-                    const baseUrl = 'https://form.typeform.com/to/bO95W9RG';
-                    const hiddenFields = [];
-                    
-                    // Add UTM parameters as hidden fields
-                    Object.keys(storedParams).forEach(key => {
-                        if (key.startsWith('utm_') || ['gclid', 'fbclid', 'msclkid', 'ttclid', 'landing_page', 'referrer'].includes(key)) {
-                            hiddenFields.push(`${key}=${encodeURIComponent(storedParams[key])}`);
-                        }
-                    });
-                    
-                    if (hiddenFields.length > 0) {
-                        const hiddenFieldsString = hiddenFields.join('&');
-                        typeformIframe.src = baseUrl + '#' + hiddenFieldsString;
-                        
-                        // Log for debugging
-                        console.log('Typeform URL with hidden fields:', typeformIframe.src);
-                        console.log('UTM Parameters being passed:', storedParams);
-                    } else {
-                        typeformIframe.src = baseUrl;
-                        console.log('No UTM parameters found to pass to Typeform');
-                    }
-                } else {
-                    typeformIframe.src = 'https://form.typeform.com/to/bO95W9RG';
-                    console.log('No UTM parameters found to pass to Typeform');
-                }
-            }
+            // Let the simple UTM script handle iframe updates automatically (Ason's approach)
+            // The utm-simple.js script will automatically append UTM parameters to all iframes
             
             overlay.style.display = 'block';
             overlay.style.animation = 'fadeIn 0.3s ease';
@@ -2168,8 +2138,8 @@
         });
     </script>
 
-    <!-- UTM Parameter Tracking -->
-    <script src="utm-tracking.js"></script>
+    <!-- UTM Parameter Tracking (Simple Ason-style approach) -->
+    <script src="utm-simple.js"></script>
     
     <!-- Enhanced tracking for Organic Demons landing page -->
     <script>

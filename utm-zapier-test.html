@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM to Zapier Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+        .test-section { background: white; padding: 20px; margin: 10px 0; border-radius: 8px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .info { color: blue; }
+        .warning { color: orange; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        button { padding: 10px 20px; margin: 5px; background: #25DF44; color: black; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #1DBF3A; }
+        .url-display { word-break: break-all; background: #f9f9f9; padding: 10px; border-radius: 4px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>UTM to Zapier Integration Test</h1>
+    
+    <div class="test-section">
+        <h2>Step 1: UTM Parameter Capture Test</h2>
+        <div id="utm-capture-status"></div>
+        <button onclick="testUTMCapture()">Test UTM Capture</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 2: Typeform URL Generation Test</h2>
+        <div id="typeform-url-test"></div>
+        <button onclick="testTypeformURL()">Generate Typeform URL with UTM</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 3: Form Field Test</h2>
+        <div id="form-field-test"></div>
+        <button onclick="testFormFields()">Test Form Field Injection</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 4: Typeform Setup Instructions</h2>
+        <div id="typeform-setup-instructions"></div>
+        <button onclick="showTypeformSetup()">Show Typeform Setup Instructions</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Step 5: Live Typeform Test</h2>
+        <div id="live-typeform-test"></div>
+        <button onclick="openTestTypeform()">Open Typeform with UTM</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Debug Information</h2>
+        <div id="debug-info"></div>
+        <button onclick="showDebugInfo()">Show Debug Info</button>
+    </div>
+
+    <!-- UTM Tracking Script -->
+    <script src="utm-tracking.js"></script>
+    
+    <script>
+        function testUTMCapture() {
+            const statusDiv = document.getElementById('utm-capture-status');
+            
+            try {
+                // Check if UTM tracker is available
+                if (!window.utmTracker) {
+                    statusDiv.innerHTML = '<div class="error">❌ UTM Tracker not initialized</div>';
+                    return;
+                }
+                
+                // Get current URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const utmParams = {};
+                
+                ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id', 'gclid', 'fbclid'].forEach(key => {
+                    const value = urlParams.get(key);
+                    if (value) utmParams[key] = value;
+                });
+                
+                // Get stored UTM parameters
+                const storedParams = window.utmTracker.getStoredUTMParams();
+                
+                statusDiv.innerHTML = `
+                    <div class="info"><strong>URL Parameters Found:</strong></div>
+                    <pre>${JSON.stringify(utmParams, null, 2)}</pre>
+                    <div class="info"><strong>Stored UTM Parameters:</strong></div>
+                    <pre>${JSON.stringify(storedParams, null, 2)}</pre>
+                    <div class="info"><strong>UTM as URL String:</strong></div>
+                    <div class="url-display">${window.utmTracker.getUTMAsURLString()}</div>
+                `;
+                
+                if (Object.keys(utmParams).length > 0) {
+                    statusDiv.innerHTML += '<div class="success">✅ UTM parameters captured successfully</div>';
+                } else {
+                    statusDiv.innerHTML += '<div class="warning">⚠️ No UTM parameters found in URL</div>';
+                }
+                
+            } catch (e) {
+                statusDiv.innerHTML = `<div class="error">❌ Error: ${e.message}</div>`;
+            }
+        }
+        
+        function testTypeformURL() {
+            const testDiv = document.getElementById('typeform-url-test');
+            
+            try {
+                if (!window.utmTracker) {
+                    testDiv.innerHTML = '<div class="error">❌ UTM Tracker not available</div>';
+                    return;
+                }
+                
+                const baseUrl = 'https://form.typeform.com/to/bO95W9RG';
+                const utmParams = window.utmTracker.getUTMAsURLString();
+                
+                let finalUrl = baseUrl;
+                if (utmParams) {
+                    finalUrl = baseUrl + '?' + utmParams;
+                }
+                
+                testDiv.innerHTML = `
+                    <div class="info"><strong>Base Typeform URL:</strong></div>
+                    <div class="url-display">${baseUrl}</div>
+                    <div class="info"><strong>UTM Parameters:</strong></div>
+                    <div class="url-display">${utmParams || 'None'}</div>
+                    <div class="info"><strong>Final URL with UTM:</strong></div>
+                    <div class="url-display">${finalUrl}</div>
+                    <div class="info"><strong>Test Link:</strong></div>
+                    <a href="${finalUrl}" target="_blank" style="color: #25DF44; font-weight: bold;">Open Typeform with UTM Parameters</a>
+                `;
+                
+                if (utmParams) {
+                    testDiv.innerHTML += '<div class="success">✅ UTM parameters will be passed to Typeform</div>';
+                } else {
+                    testDiv.innerHTML += '<div class="warning">⚠️ No UTM parameters to pass to Typeform</div>';
+                }
+                
+            } catch (e) {
+                testDiv.innerHTML = `<div class="error">❌ Error: ${e.message}</div>`;
+            }
+        }
+        
+        function testFormFields() {
+            const testDiv = document.getElementById('form-field-test');
+            
+            try {
+                if (!window.utmTracker) {
+                    testDiv.innerHTML = '<div class="error">❌ UTM Tracker not available</div>';
+                    return;
+                }
+                
+                // Create a test form
+                const testForm = document.createElement('form');
+                testForm.innerHTML = `
+                    <input type="text" name="name" value="Test User">
+                    <input type="email" name="email" value="test@example.com">
+                `;
+                
+                // Simulate form submission
+                window.utmTracker.addUTMToForm(testForm);
+                
+                const formData = new FormData(testForm);
+                const formObject = {};
+                for (let [key, value] of formData.entries()) {
+                    formObject[key] = value;
+                }
+                
+                testDiv.innerHTML = `
+                    <div class="info"><strong>Test Form Data (with UTM injection):</strong></div>
+                    <pre>${JSON.stringify(formObject, null, 2)}</pre>
+                `;
+                
+                // Check if UTM fields were added
+                const hasUTMFields = Object.keys(formObject).some(key => 
+                    key.startsWith('utm_') || ['gclid', 'fbclid', 'msclkid', 'ttclid'].includes(key)
+                );
+                
+                if (hasUTMFields) {
+                    testDiv.innerHTML += '<div class="success">✅ UTM fields successfully injected into form</div>';
+                } else {
+                    testDiv.innerHTML += '<div class="warning">⚠️ No UTM fields found in form data</div>';
+                }
+                
+            } catch (e) {
+                testDiv.innerHTML = `<div class="error">❌ Error: ${e.message}</div>`;
+            }
+        }
+        
+        function showTypeformSetup() {
+            const instructionsDiv = document.getElementById('typeform-setup-instructions');
+            
+            instructionsDiv.innerHTML = `
+                <div class="warning"><strong>⚠️ IMPORTANT: Typeform Setup Required</strong></div>
+                <div class="info">For UTM parameters to work with Zapier, you need to add hidden fields to your Typeform:</div>
+                
+                <h3>Step 1: Add Hidden Fields to Typeform</h3>
+                <ol>
+                    <li>Go to your Typeform editor: <a href="https://admin.typeform.com/to/bO95W9RG" target="_blank">https://admin.typeform.com/to/bO95W9RG</a></li>
+                    <li>Click on "Add question" → "Hidden field"</li>
+                    <li>Add these hidden fields with these exact names:</li>
+                </ol>
+                
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                    <strong>Required Hidden Fields:</strong><br>
+                    • utm_source<br>
+                    • utm_medium<br>
+                    • utm_campaign<br>
+                    • utm_term<br>
+                    • utm_content<br>
+                    • utm_id<br>
+                    • gclid<br>
+                    • fbclid<br>
+                    • landing_page<br>
+                    • referrer
+                </div>
+                
+                <h3>Step 2: Configure Zapier</h3>
+                <ol>
+                    <li>In your Zapier workflow, map these hidden fields to your destination app</li>
+                    <li>Make sure the field names match exactly</li>
+                    <li>Test the integration</li>
+                </ol>
+                
+                <div class="success">✅ Once hidden fields are added, UTM parameters will be automatically passed to Zapier!</div>
+            `;
+        }
+        
+        function openTestTypeform() {
+            const testDiv = document.getElementById('live-typeform-test');
+            
+            try {
+                if (!window.utmTracker) {
+                    testDiv.innerHTML = '<div class="error">❌ UTM Tracker not available</div>';
+                    return;
+                }
+                
+                const baseUrl = 'https://form.typeform.com/to/bO95W9RG';
+                const storedParams = window.utmTracker.getStoredUTMParams();
+                
+                let finalUrl = baseUrl;
+                if (Object.keys(storedParams).length > 0) {
+                    const hiddenFields = [];
+                    Object.keys(storedParams).forEach(key => {
+                        if (key.startsWith('utm_') || ['gclid', 'fbclid', 'msclkid', 'ttclid', 'landing_page', 'referrer'].includes(key)) {
+                            hiddenFields.push(`${key}=${encodeURIComponent(storedParams[key])}`);
+                        }
+                    });
+                    
+                    if (hiddenFields.length > 0) {
+                        const hiddenFieldsString = hiddenFields.join('&');
+                        finalUrl = baseUrl + '#' + hiddenFieldsString;
+                    }
+                }
+                
+                // Open in new window
+                const newWindow = window.open(finalUrl, 'typeform_test', 'width=800,height=600');
+                
+                testDiv.innerHTML = `
+                    <div class="success">✅ Typeform opened in new window</div>
+                    <div class="info"><strong>URL sent to Typeform:</strong></div>
+                    <div class="url-display">${finalUrl}</div>
+                    <div class="info"><strong>Instructions:</strong></div>
+                    <ol>
+                        <li>Fill out the form in the new window</li>
+                        <li>Submit the form</li>
+                        <li>Check your Zapier webhook to see if UTM parameters are received</li>
+                        <li>Look for fields like utm_source, utm_medium, utm_campaign, etc.</li>
+                    </ol>
+                    <div class="warning">⚠️ Make sure you've added the hidden fields to your Typeform first!</div>
+                `;
+                
+            } catch (e) {
+                testDiv.innerHTML = `<div class="error">❌ Error: ${e.message}</div>`;
+            }
+        }
+        
+        function showDebugInfo() {
+            const debugDiv = document.getElementById('debug-info');
+            
+            try {
+                const debugInfo = {
+                    current_url: window.location.href,
+                    user_agent: navigator.userAgent,
+                    utm_tracker_available: !!window.utmTracker,
+                    track_event_available: !!window.trackEvent,
+                    localStorage_available: typeof(Storage) !== "undefined",
+                    sessionStorage_available: typeof(Storage) !== "undefined",
+                    current_timestamp: new Date().toISOString()
+                };
+                
+                // Add UTM data if available
+                if (window.utmTracker) {
+                    debugInfo.stored_utm_params = window.utmTracker.getStoredUTMParams();
+                    debugInfo.session_utm_params = window.utmTracker.getSessionUTMParams();
+                    debugInfo.utm_url_string = window.utmTracker.getUTMAsURLString();
+                }
+                
+                debugDiv.innerHTML = `
+                    <div class="info"><strong>Debug Information:</strong></div>
+                    <pre>${JSON.stringify(debugInfo, null, 2)}</pre>
+                `;
+                
+            } catch (e) {
+                debugDiv.innerHTML = `<div class="error">❌ Error: ${e.message}</div>`;
+            }
+        }
+        
+        // Auto-run tests when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                testUTMCapture();
+                testTypeformURL();
+                testFormFields();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
